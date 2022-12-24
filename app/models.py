@@ -16,6 +16,7 @@ class Article(Base):
     published_at = Column(String)
     url_thumbnail = Column(String)
     published_at = Column(DateTime, nullable=True)
+    content = Column(String)
 
     category_id = Column(Integer,ForeignKey("category.id"))
   

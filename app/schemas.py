@@ -23,20 +23,19 @@ class ArticleBase(BaseModel):
     category_id : Optional[int]
     slug : str
     url_thumbnail : Optional[str]
-    
-
+    published_at: Optional[datetime] 
+    category_id: Optional[int]
 
 class ArticleCreate(ArticleBase):
-    published_at: Optional[datetime] 
+    content : str
     pass
 
 
 class Article(ArticleBase):
     id: int
-    published_at: Optional[datetime] 
-    category_id: Optional[int]
-    
     class Config:
         orm_mode = True
 
 
+class DetailArtical(Article):
+    content : Optional[str]

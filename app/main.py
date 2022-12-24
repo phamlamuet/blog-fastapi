@@ -23,6 +23,11 @@ def read_articles(limit: int = 100, page: int = 0, db: Session = Depends(get_db)
 def get_article_by_category(limit: int = 100, page: int = 0, db: Session = Depends(get_db), category_id: int = 1):
     articles = crud.get_articles_by_category(db=db, page=page, limit=limit, category_id=category_id)
     return articles
+    
+@app.get("/blog/articles/detail")
+def get_detail_article(db: Session = Depends(get_db), slug : str | None = None):
+    detail_artical = crud.get_detail_of_an_article(db=db, slug= slug)
+    return detail_artical
 
 @app.post("/blog/articles/", response_model=schemas.Article)
 def create_article(article: schemas.ArticleCreate, db: Session = Depends(get_db)):
